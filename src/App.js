@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import logo from './images/logo.svg';
 import './styles/App.css';
+
+var RouteHandler = ReactRouter.RouteHandler,
+    Link = ReactRouter.Link;
 
 class App extends Component {
   render() {

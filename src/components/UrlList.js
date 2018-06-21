@@ -1,10 +1,33 @@
 import React, { Component } from 'react';
 class UrlList extends Component {
     constructor(props) {
+        console.log("const");
+
         super(props);
         this.state = {
-            urls: [1,2,3,4,5,6,7,8,9],
+            urls: [ ],
         }
+    }
+    componentDidMount() {
+        console.log("ComponentDidMount");
+        fetch("http://localhost:3001/api/v1/urls")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        urls: result.urls
+                    });
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            )
     }
 
     render() {
