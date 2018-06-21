@@ -1,0 +1,26 @@
+.Home {
+    text-align: center;
+    height: 100%;
+}
+
+.Home-header {
+    background-color: #f9ff00;
+    height: 20%;
+    padding: 20px;
+    color: white;
+}
+
+.Home-title {
+    font-size: 1.5em;
+    color: #000;
+}
+
+.Home-intro {
+    font-size: large;
+    color: #222222;
+}
+
+.Home-content {
+    position: relative;
+    height: 73.9%;
+}

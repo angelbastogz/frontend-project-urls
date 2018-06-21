@@ -1,0 +1,13 @@
+.Details-url{
+    float: right;
+    background-color: #f6f6f6;
+    color: #404040;
+    width: 70%;
+    height: 100%;
+}
+
+.Url {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}

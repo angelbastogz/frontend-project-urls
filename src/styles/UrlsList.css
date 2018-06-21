@@ -1,0 +1,18 @@
+.Url-list {
+    position: absolute;
+    overflow: hidden;
+    background-color: black;
+    color: #f9ff00;
+    width: 30%;
+    height: 100%;
+}
+
+.Url-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.Url-list ul li{
+    padding-bottom: 3px;
+    padding-right: 10px;
+}
