@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 class UrlList extends Component {
     constructor(props) {
-        console.log("const");
-
         super(props);
         this.state = {
             urls: [ ],
@@ -31,7 +29,11 @@ class UrlList extends Component {
 
     render() {
         var listUrls = this.state.urls.map((url) =>
-            <li key={url.id}>{"http://localhost:3000/"+url.generated_code}</li>
+            <li key={url.id}>
+                <p className="type-url">Original: <span>{url.original }</span>   ↓↓↓↓</p>
+                <span className="label-space"></span>
+                <label className="type-url-label">Generated: <a href={"http://localhost:3001/api/v1/"+url.generated_code}>{"http://localhost:3001/"+url.generated_code}</a></label>
+            </li>
         );
         return (
             <div className="Url-list">
