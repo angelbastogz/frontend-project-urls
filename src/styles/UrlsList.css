@@ -16,3 +16,19 @@
     padding-bottom: 3px;
     padding-right: 10px;
 }
+
+.type-url {
+    color: #ffffff;
+}
+
+.type-url span {
+    color: #f6f6f6;
+}
+
+.type-url-label {
+    color: #f9ff00;
+}
+
+a {
+    color: #f0ff00 !important;
+}

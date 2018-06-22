@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import UrlList from "../../components/UrlList";
 import DetailsUrl from "../../components/DetailsUrl";
+
 class Home extends Component {
+
     render() {
         return (
             <div className="Home">
