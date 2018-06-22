@@ -9,7 +9,6 @@ class UrlList extends Component {
         }
     }
     componentDidMount() {
-        console.log("ComponentDidMount");
         fetch("http://localhost:3001/api/v1/urls")
             .then(res => res.json())
             .then(
@@ -32,7 +31,7 @@ class UrlList extends Component {
 
     render() {
         var listUrls = this.state.urls.map((url) =>
-            <li>{url}</li>
+            <li key={url.id}>{"http://localhost:3000/"+url.generated_code}</li>
         );
         return (
             <div className="Url-list">

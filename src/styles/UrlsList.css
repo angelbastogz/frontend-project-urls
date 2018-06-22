@@ -1,6 +1,6 @@
 .Url-list {
     position: absolute;
-    overflow: hidden;
+    overflow: scroll;
     background-color: black;
     color: #f9ff00;
     width: 30%;

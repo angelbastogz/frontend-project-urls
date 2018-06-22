@@ -1,5 +1,7 @@
 var {EventEmitter} = require('fbemitter');
 var UrlStore = new EventEmitter();
+var urls = []
+
 var clone = function(obj) {
     return (JSON.parse(JSON.stringify(obj)));
 };
@@ -43,36 +45,16 @@ UrlStore.emitChange = function() {
 // `id` is optional. If the id is anything other than a number, send
 // the whole thing. If id is passed and there's a match in the array,
 // send that. Else, return false
-UrlStore.get = function(id) {
-    var result = UrlStore.getModel();
-
-    if ( isNaN(id) ) {
-        result = UrlStore._collection;
-    }
-    else {
-        // id can still be a string even after passing isNaN :|
-        id = parseInt(id);
-        var collection = UrlStore._collection.items;
-        for (var i = 0; i < collection.length; i++) {
-            if (collection[i].id === id) {
-                result = collection[i];
-                break;
-            }
-        }
-    }
-    return result;
-};
-
-UrlStore.getModel = function() {
-    return clone(this._model);
+UrlStore.getAll = function() {
+    return urls;
 };
 
 UrlStore.updateCollection = function(data) {
-    if (data.items instanceof Array) {
-        UrlStore._collection = data;
+    if (data.urls instanceof Array) {
+        UrlStore.urls = data
     }
     else {
-        UrlStore.addThis(data);
+        UrlStore.urls.add(data)
     }
 };
 
@@ -83,21 +65,15 @@ UrlStore.updateCollection = function(data) {
 UrlStore.dispatchToken = Dispatcher.register(function (action) {
     switch(action.type) {
         case UrlConstants.FETCH:
-            UrlStore.isLoading = true;
-            UrlStore.status = 'working';
             UrlStore.emit(UrlConstants.CHANGE);
             break;
 
         case UrlConstants.RECEIVE:
-            UrlStore.isLoading = false;
-            UrlStore.status = 'success';
             UrlStore.updateCollection(action.data);
             UrlStore.emit(UrlConstants.CHANGE);
             break;
 
         case UrlConstants.RECEIVE_FAIL:
-            UrlStore.isLoading = false;
-            UrlStore.status = 'fail';
             UrlStore.emit(UrlConstants.CHANGE);
             break;
 
