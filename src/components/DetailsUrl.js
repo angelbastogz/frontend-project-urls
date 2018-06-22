@@ -21,9 +21,8 @@ class DetailsUrl extends Component {
         var message = ""
         var data = {url: this.state.url};
         var _= this
-        console.log("submit " + this.state.url);
 
-        fetch('http://localhost:3001/api/v1/generate?url='+this.state.url, {
+        fetch('http://localhost:3000/api/v1/generate?url='+this.state.url, {
             method: 'post',
             body: data
         }).then(function(response) {
